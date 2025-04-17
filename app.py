@@ -2,11 +2,12 @@
 from flask import Flask, request
 import openai
 import requests
+import os  # 加这个
 
 app = Flask(__name__)
 
-openai.api_base = "https://YOUR_PROXY_URL/v1"
-openai.api_key = "YOUR_API_KEY"
+openai.api_base = os.getenv("OPENAI_API_BASE")  # 改成读取环境变量
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
