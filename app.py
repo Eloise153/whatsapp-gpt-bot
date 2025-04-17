@@ -2,11 +2,11 @@
 from flask import Flask, request
 import openai
 import requests
-import os  # 加这个
+import os  # 必须引入
 
 app = Flask(__name__)
 
-openai.api_base = os.getenv("OPENAI_API_BASE")  # 改成读取环境变量
+openai.api_base = os.getenv("OPENAI_API_BASE")  # 从环境变量读取
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route('/webhook', methods=['POST'])
